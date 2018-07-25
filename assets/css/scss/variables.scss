@@ -6,12 +6,6 @@ $anthracite-translucent: hsla(220, 5%, 14%, .5);
 $light: hsla(220, 0%, 69%, 1);
 $dark: hsla(0, 0%, 0%, .8);
 
-/* Fonts */
-@font-face {
-  font-family: "Highlander";
-  src: url("../pages/highlander-webfont.woff") format("woff");
-}
-
 @import url('https://fonts.googleapis.com/css?family=Istok+Web|PT+Sans');
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,300,700');
 
