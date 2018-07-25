@@ -16,9 +16,11 @@ Encore
 
     Encore.enableSassLoader()
     // uncomment to define the assets of the project
-    .addStyleEntry('css/app', './assets/bootstrap/css/bootstrap.css')
-    //.addEntry('js/app', './assets/js/app.js')
-    //.addStyleEntry('css/app', './assets/css/app.scss')
+    .addStyleEntry('css/app', './assets/css/bootstrap-css/bootstrap.css')
+    // .addStyleEntry('css/app', './assets/scss/style.scss')
+    .addEntry('js/app', './assets/js/bootstrap-js/bootstrap.js')
+    // .addEntry('js/app', './assets/js/vuejs/vue.js')
+    // .addEntry('js/app', './assets/js/vuejs/vue.js')
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
