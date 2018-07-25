@@ -3,7 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+        
+        {# Bootstrap stylesheet #}
+        <link href="{{ asset('build/css/app.css') }}" rel="stylesheet">
+
+        {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}

@@ -16,7 +16,7 @@ Encore
 
     Encore.enableSassLoader()
     // uncomment to define the assets of the project
-    .addStyleEntry('css/app', './assets/scss/reset.scss')
+    .addStyleEntry('css/app', './assets/bootstrap/css/bootstrap.css')
     //.addEntry('js/app', './assets/js/app.js')
     //.addStyleEntry('css/app', './assets/css/app.scss')
 
