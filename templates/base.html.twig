@@ -17,8 +17,10 @@
         {% block body %}{% endblock %}
         {% block javascripts %}
         
+        <script src="{{ asset('build/vuesjs/app.js') }}"></script>
+        <script src="{{ asset('build/bootstrap-js/app.js') }}"></script>
         <script src="{{ asset('build/js/app.js') }}"></script>
-        
+
         {% endblock %}
     </body>
 </html>
