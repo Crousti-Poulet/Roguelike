@@ -12,6 +12,10 @@
     </head>
     <body class="container">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        
+        <link href="{{ asset('build/js/app.js') }}" rel="stylesheet">
+        
+        {% endblock %}
     </body>
 </html>
