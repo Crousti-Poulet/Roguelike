@@ -24,13 +24,17 @@ html {
   width: device-width;
 }
 
+<<<<<<< HEAD
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+=======
+article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
-}
-
-body {
   margin: 0;
+<<<<<<< HEAD
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+=======
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+>>>>>>> 0a949404960dbea3f7a6865f0d5a5bf848eb6400
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -160,7 +164,11 @@ pre,
 code,
 kbd,
 samp {
+<<<<<<< HEAD
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+=======
+  font-family: monospace, monospace;
+>>>>>>> 0a949404960dbea3f7a6865f0d5a5bf848eb6400
   font-size: 1em;
 }
 
@@ -180,9 +188,14 @@ img {
   border-style: none;
 }
 
+<<<<<<< HEAD
 svg {
   overflow: hidden;
   vertical-align: middle;
+=======
+svg:not(:root) {
+  overflow: hidden;
+>>>>>>> 0a949404960dbea3f7a6865f0d5a5bf848eb6400
 }
 
 table {
