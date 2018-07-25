@@ -8,13 +8,19 @@
         {# Bootstrap stylesheet #}
         <link href="{{ asset('build/css/app.css') }}" rel="stylesheet">
 
+        {# Personal stylesheet #}
+        <link href="{{ asset('build/stylesheet/app.css') }}" rel="stylesheet">
+
         {% endblock %}
     </head>
     <body class="container">
         {% block body %}{% endblock %}
         {% block javascripts %}
         
+        <script src="{{ asset('build/vuejs/app.js') }}"></script>
+        <script src="{{ asset('build/bootstrap-js/app.js') }}"></script>
         <script src="{{ asset('build/js/app.js') }}"></script>
+        
         
         {% endblock %}
     </body>
