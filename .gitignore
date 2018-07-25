@@ -6,16 +6,6 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
-<<<<<<< HEAD
-=======
-###> symfony/webpack-encore-pack ###
-/node_modules/
-/public/build/
-npm-debug.log
-yarn-error.log
-###< symfony/webpack-encore-pack ###
-
->>>>>>> c54b3b4628491d68bfe91925523ef1946ac7bcca
 ###> symfony/phpunit-bridge ###
 .phpunit
 /phpunit.xml
