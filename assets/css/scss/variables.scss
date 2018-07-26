@@ -1,21 +1,12 @@
 /* Color theme */
-$mint-green: hsla(156, 95%, 59%, 1);
-$deep-blue: hsla(215, 27%, 19%, 1);
-$anthracite: hsla(220, 5%, 14%, 1);
-$anthracite-translucent: hsla(220, 5%, 14%, .5);
-$light: hsla(220, 0%, 69%, 1);
-$dark: hsla(0, 0%, 0%, .8);
+$dark-blue: hsl(200,86%,11%);
+$pale-green: hsl(139, 18%, 40%);
+$blood-red: hsl(1, 72%,64%);
+$pale-beige: hsl(37, 41%, 79%);
+$pale-blue: hsl(180, 40%, 39%); 
 
-@import url('https://fonts.googleapis.com/css?family=Istok+Web|PT+Sans');
-@import url('https://fonts.googleapis.com/css?family=Raleway:100,300,700');
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Jura:400,600|Yrsa:400,700');
 
-$main-font: 'Istok Web', sans-serif;
-$second-font: 'PT Sans', sans-serif;
-
-@mixin raleway($weight, $size) {
-  font: {
-    family: 'Raleway';
-    weight: $weight;
-    size: $size;
-  }
-}
+$font-serif: 'Yrsa', serif;
+$font-sans: 'Jura', sans-serif;
