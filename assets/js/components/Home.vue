@@ -11,12 +11,16 @@
 </template>
 
 <script>
-export default {
-  name: "home"
+module.exports = {
+  data: function () {
+    return {
+      name: "Jean-Marie Le pen"
+    }
+  }
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
 </style>
 
