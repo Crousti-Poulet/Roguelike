@@ -28,6 +28,9 @@ Encore
     // uncomment if you use Sass/SCSS files
     //.enableSassLoader()
 
+    // Enable Vue Loader
+    .enableVueLoader()
+
     // uncomment for legacy applications that require $/jQuery as a global variable
     //.autoProvidejQuery()
 ;
