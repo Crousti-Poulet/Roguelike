@@ -9,6 +9,5 @@ var home = new Vue({
   data: {
     name: 'Jean-Marie Le Pen'
   }
-
   
 });
