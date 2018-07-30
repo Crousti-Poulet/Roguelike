@@ -20,16 +20,12 @@ Encore
     .addStyleEntry('stylesheet/app', './assets/css/scss/style.scss')
     // .addEntry('js/app', './assets/js/bootstrap-js/bootstrap.js')
     .addEntry('js/app', './assets/js/main.js')
-    .addEntry('vuejs/app', './assets/js/vuejs/vue.js')
     .addEntry('bootstrap-js/app', './assets/js/bootstrap-js/bootstrap.js')
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
 
     // uncomment if you use Sass/SCSS files
     //.enableSassLoader()
-
-    // Enable Vue Loader
-    .enableVueLoader()
 
     // uncomment for legacy applications that require $/jQuery as a global variable
     //.autoProvidejQuery()
