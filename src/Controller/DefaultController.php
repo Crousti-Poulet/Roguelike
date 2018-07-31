@@ -9,7 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    /** @Route("/", name="homePage") **/
+    /** @Route
+     * ("/", name="homePage") 
+     */
     public function homeAction(Request $request)
     {
         return $this->render('DefaultPages/home.html.twig');
