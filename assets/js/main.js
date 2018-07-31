@@ -9,8 +9,16 @@ var home = new Vue({
   
   el: "#app",
   components: {
-    Navbar,
-    Home,
-    Footervue
+    Home
   }
+});
+
+let layout = new Vue({
+  el: '#header',
+  components: {Navbar}
+});
+
+let footervue = new Vue({
+  el: "#footertest",
+  components: {Footervue}
 });

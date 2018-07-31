@@ -13,8 +13,18 @@
 
         {% endblock %}
     </head>
+    
     <body class="container">
+        <header id="header">
+            <navbar></navbar>
+        </header>
+        
         {% block body %}{% endblock %}
+
+        <footer id="footertest">
+            <footervue></footervue>
+        </footer>
+
         {% block javascripts %}
         
         <script src="{{ asset('build/vuejs/app.js') }}"></script>
@@ -23,4 +33,5 @@
 
         {% endblock %}
     </body>
+    
 </html>
