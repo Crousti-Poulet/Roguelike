@@ -2,7 +2,12 @@
 
 namespace App\Entity;
 
+use App\Entity\Users;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
@@ -18,6 +23,12 @@ class Users
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *     min = 2,
+     *     max = 20,
+     *     minMessage = "Votre pseudo doit comporter au moins {{ limit }} caractères",
+     *     maxMessage = "Votre pseudo ne peut excéder {{ limit }} charactères"
+     * )
      */
     private $name;
 
@@ -27,7 +38,7 @@ class Users
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="datetime")
      */
     private $created_at;
 
@@ -70,12 +81,12 @@ class Users
         return $this;
     }
 
-    public function getCreatedAt(): ?string
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(string $created_at): self
+    public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
 
