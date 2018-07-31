@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Roguelike | Connexion{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+  <div class="row">
+    
+    <div class="form d-flex flex-column mx-auto pb-5 pt-5 col-12 col-lg-6">
+
+    <h2 class="row display-4 mx-auto pb-3">Connexion</h2>
+    
+    {{ form_start(loginForm, { 'attr': {'class': 'd-flex flex-column col-12'} }) }}
+
+    <div class="form-group">
+      {{ form_label(loginForm.username) }}
+      {{ form_errors(loginForm.username) }}
+      {{ form_widget(loginForm.username, { 'attr': {'class':'form-control'} }) }}
+    </div>
+
+    <div class="form-group">
+      {{ form_label(loginForm.password) }}
+      {{ form_errors(loginForm.password) }}
+      {{ form_widget(loginForm.password, { 'attr': {'class':'form-control'} }) }}
+    </div>
+    
+    <button type="submit" class="btn btn-outline-primary btn-lg col-4">Se connecter</button>
+      
+    {{ form_end(loginForm) }}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

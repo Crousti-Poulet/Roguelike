@@ -14,24 +14,32 @@
         {% endblock %}
     </head>
     
-    <body class="container">
-        <header id="header">
-            <navbar></navbar>
+    <body class="container-fluid p-0">
+        <header id="header container">
+            <nav class="navbar navbar-dark bg-dark justify-content-center">
+                <ul class="nav">
+                    <li class="nav-item"><a href="{{ path('homePage') }}" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Ranking</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Index</a></li>
+                    <li class="nav-item"><a href="{{ path('login') }}" class="nav-link">Login</a></li>
+                </ul>
+            </nav>
         </header>
         
         {% block body %}{% endblock %}
 
-        <footer id="footertest">
-            <footervue></footervue>
+        <footer class="footer bg-dark text-muted p-4 text-center fixed-bottom">
+            <p>Un site fait avec beaucoup d'amour et de café</p>
         </footer>
 
         {% block javascripts %}
         
-        <script src="{{ asset('build/vuejs/app.js') }}"></script>
         <script src="{{ asset('build/bootstrap-js/app.js') }}"></script>
         <script src="{{ asset('build/js/app.js') }}"></script>
 
         {% endblock %}
+
+    
     </body>
     
 </html>
