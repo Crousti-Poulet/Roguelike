@@ -3,8 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Users;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Users|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,4 +47,20 @@ class UsersRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * Checking a user's existence in DB
+     * @param $username str
+     * @return 1 || null
+     */
+    public function findOneByName($username): ?Users
+    {
+        return $this->createQueryBuilder('query')
+                    ->andWhere('query.name = :name')
+                    ->setParameter('name', $username)
+                    ->getQuery()
+                    ->getOneOrNullResult()
+        ;
+    }
+
 }
