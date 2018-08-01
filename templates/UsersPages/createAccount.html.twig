@@ -15,4 +15,10 @@
 
 {{ form_end(registrationForm) }}
 
+{% for message in app.flashes('error') %}
+    <div class="flash-error">
+        {{ message }}
+    </div>
+{% endfor %}
+
 {% endblock %}

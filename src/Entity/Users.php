@@ -3,11 +3,8 @@
 namespace App\Entity;
 
 use App\Entity\Users;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
@@ -23,12 +20,6 @@ class Users
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(
-     *     min = 2,
-     *     max = 20,
-     *     minMessage = "Votre pseudo doit comporter au moins {{ limit }} caractères",
-     *     maxMessage = "Votre pseudo ne peut excéder {{ limit }} charactères"
-     * )
      */
     private $name;
 
