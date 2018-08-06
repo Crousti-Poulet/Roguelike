@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\Users;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
- * @method Users|null find($id, $lockMode = null, $lockVersion = null)
- * @method Users|null findOneBy(array $criteria, array $orderBy = null)
- * @method Users[]    findAll()
- * @method Users[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method User|null find($id, $lockMode = null, $lockVersion = null)
+ * @method User|null findOneBy(array $criteria, array $orderBy = null)
+ * @method User[]    findAll()
+ * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UsersRepository extends ServiceEntityRepository
+class UserRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Users::class);
+        parent::__construct($registry, User::class);
     }
 
 //    /**
@@ -53,11 +53,11 @@ class UsersRepository extends ServiceEntityRepository
      * @param $username str
      * @return 1 || null
      */
-    public function findOneByName($username): ?Users
+    public function findOneByName($username): ?User
     {
         return $this->createQueryBuilder('query')
                     ->andWhere('query.name = :name')
-                    ->setParameter('name', $username)
+                    ->setParameter('username', $username)
                     ->getQuery()
                     ->getOneOrNullResult()
         ;

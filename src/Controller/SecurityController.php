@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
-use App\Entity\Users;
+use App\Entity\User;
 use App\Form\LoginForm;
-use App\Repository\UsersRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends Controller
 {
@@ -17,50 +18,29 @@ class SecurityController extends Controller
   /**
    * @Route("/login", name="login")
    */
-  public function login(Request $request)
+  public function login(Request $request, AuthenticationUtils $utils)
   {
-    //Creating the login form
-    $form = $this->createForm(LoginForm::class);
+    $error = $utils->getLastAuthenticationError();
+    $lastUsername = $utils->getLastUsername();
 
-    if($_POST) {
-
-      $username = $request->get('login_form')['username'];
-      $password = $request->get('login_form')['password'];
-      $session = $request->getSession();
-      $errors = [];
-
-      if(!$this->getDoctrine()->getRepository(Users::class)->findOneByName($username)) {
-        //User does not exist -> adding flash error
-        $this->addFlash('error', 'Nom d\'utilisateur ou mot de passe incorrect');
-        $errors[] = 'Nom d\'utilisateur ou mot de passe incorrect';
-      }
-  
-
-      //If no error => set $_SESSION['id'] & $_SESSION['username']
-
-      if (empty($errors)) {     
-        //$session->start();
-        $session->set('name', $username);
-        $this->addFlash('success', 'Connexion réussie');
-        return $this->redirectToRoute('homePage');
-      }
-      
+    //Si il n'y a pas d'erreur en flash alors on ajoute un flash 'success'
+    if(!isset($error)) {
+      $this->addFlash('success', 'Authentification réussie');
     }
 
-    //Checking the existence of this user in DB
-
-    return $this->render('UsersPages/login.html.twig', ['loginForm' => $form->createView()]);
+    return $this->render('UsersPages/login.html.twig', [
+      'error'     => $error,
+      'last_username' => $lastUsername
+      ]);
   }
 
   /************LOGOUT************/
   /**
   * @Route("/logout", name="logout")
   */
-    public function logout(Request $request) 
-    {
-    $session = $request->getSession();
-    $session->clear();
-    return $this->redirectToRoute('homePage');
+  public function logout(Request $request) 
+  {
+
   }
 
 }

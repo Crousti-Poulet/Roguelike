@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Users;
+use App\Entity\User;
 use App\Form\registrationForm;
 use App\Controller\UsersController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +18,7 @@ Class UsersController extends Controller
      */
     public function createAccountAction(request $request, ObjectManager $manager)
     {
-        $form = $this->createForm(registrationForm::class);
+        $form = $this->createForm(registrationForm::class); 
        
         if(!empty($_POST)) {
             
@@ -29,11 +29,11 @@ Class UsersController extends Controller
 
             if($form->isSubmitted() && $form->isValid()) {
                 // vérifier que le nom d'utilisateur ou l'adresse email n'est pas déjà enregistré (sinon exception non gérée)
-                $userExists = $manager->getRepository(Users::class)->findOneBy([
-                    'name' => $request->get('registration_form')['_name']
+                $userExists = $manager->getRepository(User::class)->findOneBy([
+                    'username' => $request->get('registration_form')['_name']
                 ]); 
 
-                $emailExists = $manager->getRepository(Users::class)->findOneBy([
+                $emailExists = $manager->getRepository(User::class)->findOneBy([
                     'email' => $request->get('registration_form')['_email']
                 ]);
 
@@ -47,9 +47,9 @@ Class UsersController extends Controller
                 } 
                 else if ($emailExists === null && $userExists === null) {
 
-                    $user = new Users();
+                    $user = new User();
                     $user->setCreatedAt(new \DateTime());
-                    $user->setName($request->get('registration_form')['_name']);
+                    $user->setUsername($request->get('registration_form')['_name']);
                     $user->setEmail($request->get('registration_form')['_email']);
                     $user->setPassword($request->get('registration_form')['_password']['first']);
                     

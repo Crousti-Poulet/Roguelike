@@ -2,14 +2,15 @@
 
 namespace App\Entity;
 
-use App\Entity\Users;
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class Users
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -21,7 +22,7 @@ class Users
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -48,14 +49,14 @@ class Users
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getUsername(): ?string
     {
-        return $this->name;
+        return $this->username;
     }
 
-    public function setName(string $name): self
+    public function setUsername(string $username): self
     {
-        $this->name = $name;
+        $this->username = $username;
 
         return $this;
     }
@@ -107,4 +108,39 @@ class Users
 
         return $this;
     }
+
+    //Méthodes à implémenter avec UserInterface
+    
+    public function getRoles() {
+        return [
+            'ROLE_USER'
+        ];
+    }
+
+    public function getSalt() {
+
+    }
+
+    public function eraseCredentials() {
+
+    }
+
+    public function serialize() {
+        return serialize([
+            $this->id,
+            $this->username,
+            $this->email,
+            $this->password
+        ]);
+    }
+
+    public function unserialize(String $string) {
+        list(
+            $this->id,
+            $this->username,
+            $this->email,
+            $this->password
+        ) = unserialize($string, ['allowed_classes' => false]);
+    }
+    
 }

@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\GamesRepository")
  */
-class Games
+class Game
 {
     /**
      * @ORM\Id()
@@ -54,7 +54,7 @@ class Games
     private $img_path;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Comments", mappedBy="game_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="game_id", orphanRemoval=true)
      */
     private $comments;
 

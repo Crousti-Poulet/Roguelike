@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentsRepository")
  */
-class Comments
+class Comment
 {
     /**
      * @ORM\Id()
@@ -17,13 +17,13 @@ class Comments
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Games", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Game", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $game_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Users")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $author_id;
@@ -65,12 +65,12 @@ class Comments
         return $this;
     }
 
-    public function getAuthorId(): ?Users
+    public function getAuthorId(): ?User
     {
         return $this->author_id;
     }
 
-    public function setAuthorId(?Users $author_id): self
+    public function setAuthorId(?User $author_id): self
     {
         $this->author_id = $author_id;
 
