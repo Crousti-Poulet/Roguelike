@@ -1,3 +1,85 @@
 @import 'reset.scss';
 @import 'variables.scss';
 @import 'mixins.scss';
+
+/* ----------- GLOBAL ---------------- */
+* {
+  @include box-sizing;
+  outline: none;
+}
+
+
+body {
+
+  p {
+    font: {
+      size: 18px;
+      family: $font-serif;
+    }
+    color: $dark-blue;
+    line-height: 1em;
+  }
+}
+
+h1 {
+  font: {
+    family: $font-sans;
+    size: 50px;
+    variant: small-caps;
+  }
+  color: $blood-red;
+}
+
+h2 {
+  font: {
+    family: $font-sans;
+    size: 40px;
+  }
+}
+
+
+/* ----------- NAV ---------------- */
+nav {
+  font: {
+    family: $font-sans;
+    weight: bolder;
+    variant: small-caps;
+    size: 1.5em;
+  }
+  letter-spacing: .1em;
+  background-color: $pale-green;
+  
+  ul {
+    li {
+      a {
+        color: $pale-beige;
+        @include transition(all, .3s, ease);
+
+        &:hover {
+          color: $blood-red;
+        }
+      }
+    }
+  }
+}
+
+/* ----------- MAIN ---------------- */
+main {
+  padding: 2em;
+}
+
+/* ----------- FORM ---------------- */
+label {
+  color: $pale-green;
+  padding: 5px 0;
+  font-size: 20px;
+  font-family: $font-sans;
+}
+
+/* ----------- FOOTER ---------------- */
+footer {
+  background-color: $pale-green;
+  p {
+    color: $pale-beige;
+  }
+}

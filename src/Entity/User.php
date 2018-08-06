@@ -24,7 +24,7 @@ class Users implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -53,14 +53,14 @@ class Users implements UserInterface, \Serializable
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getUsername(): ?string
     {
-        return $this->name;
+        return $this->username;
     }
 
-    public function setName(string $name): self
+    public function setUsername(string $username): self
     {
-        $this->name = $name;
+        $this->username = $username;
 
         return $this;
     }
@@ -130,44 +130,43 @@ class Users implements UserInterface, \Serializable
         return $this;
     }
 
-    public function eraseCredentials()
+    //Méthodes à implémenter avec UserInterface
+    
+    public function getRoles() 
     {
-        $this->plainPassword = null;
+        return [
+            'ROLE_USER'
+        ];
     }
 
-     public function getSalt()
+    public function getSalt() 
     {
 
     }
 
-    public function getUsername()
+    public function eraseCredentials() 
     {
-        return $this->username;
+
     }
 
-     public function getRoles()
+    public function serialize() 
     {
-        return array('ROLE_USER');
-    }
-
-     /** @see \Serializable::serialize() */
-    public function serialize()
-    {
-        return serialize(array(
+        return serialize([
             $this->id,
             $this->username,
-            $this->password,
-        ));
+            $this->email,
+            $this->password
+        ]);
     }
 
-    /** @see \Serializable::unserialize() */
-    public function unserialize($serialized)
+    public function unserialize(String $string) 
     {
-        list (
+        list(
             $this->id,
             $this->username,
-            $this->password,
-        ) = unserialize($serialized, array('allowed_classes' => false));
+            $this->email,
+            $this->password
+        ) = unserialize($string, ['allowed_classes' => false]);
     }
-
+    
 }

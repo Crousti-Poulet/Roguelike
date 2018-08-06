@@ -14,35 +14,25 @@
         {% endblock %}
     </head>
     
-    <body class="container-fluid p-0">
-        <header id="header container">
-            <nav class="navbar navbar-dark bg-dark justify-content-center">
+    <body>
+        <header>
+            <nav class="navbar p-3">
                 <ul class="nav">
                     <li class="nav-item"><a href="{{ path('homePage') }}" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Ranking</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Index</a></li>
                     <li class="nav-item"><a href="{{ path('login') }}" class="nav-link">Login</a></li>
-                    {% if app.session.get('name') is defined %}
-                    <li class="nav-item"><a href="#" class="nav-link">{{ app.session.get('name') }}</a></li>
-                    {% endif %}
                     <li class="nav-item"><a href="{{ path('logout') }}" class="nav-link">Logout</a></li>
                 </ul>
             </nav>
         </header>
 
         <!-- Flash messages go here -->
-      
-        {% for error in app.flashes('error') %}
-            <p class="alert alert-danger">{{ error }}</p>
-        {% endfor %}
-
-        {% for success in app.flashes('success') %}
-            <p class="alert alert-success">{{ success }}</p>
-        {% endfor %}
-        
+        <main class="container">
         {% block body %}{% endblock %}
+        </main>
 
-        <footer class="footer bg-dark text-muted p-4 text-center fixed-bottom">
+        <footer class="footer p-4 text-center fixed-bottom">
             <p>Un site fait avec beaucoup d'amour et de café</p>
         </footer>
 
