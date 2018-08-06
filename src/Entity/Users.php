@@ -2,14 +2,17 @@
 
 namespace App\Entity;
 
+use Serializable;
 use App\Entity\Users;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
+ * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
-class Users
+class Users implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -42,6 +45,8 @@ class Users
      * @ORM\Column(type="string", length=255)
      */
     private $password;
+
+    private $plainPassword;
 
     public function getId()
     {
@@ -96,7 +101,24 @@ class Users
         return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+    
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
+        $this->password = null;
+    }
+
+    public function getPassword()
     {
         return $this->password;
     }
@@ -107,4 +129,45 @@ class Users
 
         return $this;
     }
+
+    public function eraseCredentials()
+    {
+        $this->plainPassword = null;
+    }
+
+     public function getSalt()
+    {
+
+    }
+
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+     public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+     /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+        ) = unserialize($serialized, array('allowed_classes' => false));
+    }
+
 }

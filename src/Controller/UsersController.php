@@ -10,13 +10,14 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 Class UsersController extends Controller
 {
     /** @Route
      * ("/account", name="createAccount") 
      */
-    public function createAccountAction(request $request, ObjectManager $manager)
+    public function createAccountAction(request $request, ObjectManager $manager, UserPasswordEncoderInterface $passwordEncoder)
     {
         $form = $this->createForm(registrationForm::class);
        
@@ -51,7 +52,10 @@ Class UsersController extends Controller
                     $user->setCreatedAt(new \DateTime());
                     $user->setName($request->get('registration_form')['_name']);
                     $user->setEmail($request->get('registration_form')['_email']);
-                    $user->setPassword($request->get('registration_form')['_password']['first']);
+                    $user->setPlainPassword($request->get('registration_form')['_password']['first']);
+
+                    $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+                    $user->setPassword($password);
                     
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($user);
