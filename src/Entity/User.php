@@ -3,16 +3,16 @@
 namespace App\Entity;
 
 use Serializable;
-use App\Entity\Users;
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Table(name="users")
- * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class Users implements UserInterface, \Serializable
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -45,6 +45,11 @@ class Users implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=255)
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=false, options={"default":"ROLE_USER"})
+     */
+    private $roles;
 
     private $plainPassword;
 
@@ -131,11 +136,15 @@ class Users implements UserInterface, \Serializable
     }
 
     //Méthodes à implémenter avec UserInterface
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+    }
     
     public function getRoles() 
     {
         return [
-            'ROLE_USER'
+            $this->roles
         ];
     }
 
@@ -159,7 +168,7 @@ class Users implements UserInterface, \Serializable
         ]);
     }
 
-    public function unserialize(String $string) 
+    public function unserialize($string) 
     {
         list(
             $this->id,
