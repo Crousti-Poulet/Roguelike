@@ -20,6 +20,7 @@ Encore
     .addStyleEntry('stylesheet/app', './assets/css/scss/style.scss')
     // .addEntry('js/app', './assets/js/bootstrap-js/bootstrap.js')
     .addEntry('js/app', './assets/js/main.js')
+    .addEntry('jquery-js/app', './assets/js/jquery.js')
     .addEntry('bootstrap-js/app', './assets/js/bootstrap-js/bootstrap.js')
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()

@@ -6,18 +6,24 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\EqualTo;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Validator\Constraints\AbstractComparison;
 
-class registrationForm extends AbstractType
+class registrationForm extends AbstractType 
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $randomIntOne = rand(0, 20);
+        $randomIntTwo = rand(0,20);
+        $randomInt = [ $randomIntOne, $randomIntTwo ];
         $builder
             ->add('_name',TextType::class, [
                 'label' => 'Pseudo',
@@ -62,6 +68,14 @@ class registrationForm extends AbstractType
                         'message' => 'Le mot de passe est obligatoire'
                     ])
                 ]
+            ])
+            ->add('_captcha',TextType::class, [
+                'label' => $randomIntOne .' + '. $randomIntTwo . ' = ',
+                'required' => true,
+                    new EqualTo ( [
+                        'value' => $randomIntOne + $randomIntTwo,
+                        'message' => 'Veuillez donner le bon résultat de l\'opération'
+                    ])
             ])
             ->add('submit', SubmitType::class)
             ->getForm();

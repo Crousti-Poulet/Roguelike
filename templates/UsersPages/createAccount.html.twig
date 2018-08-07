@@ -4,10 +4,6 @@
 
 {% block body %}
 
-{# <div id="app">
-    <app-CreateAccount></app-CreateAccount>
-</div> #}   
-
 <h1 class="display-4">Création de compte</h1>
 
 {{ form_start(registrationForm) }}
@@ -20,5 +16,9 @@
         {{ message }}
     </div>
 {% endfor %}
+
+{% endblock %}
+
+{% block javascripts %}
 
 {% endblock %}

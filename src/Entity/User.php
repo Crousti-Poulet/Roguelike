@@ -10,9 +10,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Table(name="users")
- * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class Users implements UserInterface, \Serializable
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -159,7 +159,7 @@ class Users implements UserInterface, \Serializable
         ]);
     }
 
-    public function unserialize(String $string) 
+    public function unserialize($string) 
     {
         list(
             $this->id,

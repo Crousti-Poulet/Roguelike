@@ -1,7 +1,7 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
-    encoders:
-        App\Entity\User: plaintext
+    # encoders:
+    #     App\Entity\User: plaintext
     providers:
         my_provider:
             entity:
@@ -39,6 +39,6 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
     encoders:
-        App\Entity\Users:
+        App\Entity\User:
             algorithm: bcrypt
             cost: 12
