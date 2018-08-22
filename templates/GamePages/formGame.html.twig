@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formGame 'bootstrap_4_layout.html.twig' %}
+
+{% block title %} Ajouter un jeu {% endblock %}
+
+{% block body %}
+
+<h1 class="display-4">Création de compte</h1>
+
+{#{{ form_start(addGameForm) }}
+
+{{ form_errors(addGameForm) }}
+
+{{ form_row(addGameForm.title, {'attr': {'class' : 'form-control'}}) }}
+{{ form_row(addGameForm.description, {'attr': {'class' : 'form-control'}}) }}
+{{ form_row(addGameForm.studio, {'attr': {'class' : 'form-control'}}) }}
+{{ form_row(addGameForm.release_date, {'attr': {'class' : 'form-control'}}) }}
+
+{{ form_end(addGameForm) }}
+
+{% for message in app.flashes('error') %}
+    <div class="flash-error">
+        {{ message }}
+    </div>
+{% endfor %}#}
+
+{{ form_start(formGame) }}
+
+{{ form_row(formGame.title, {'attr': {'placeholder': 'Titre du jeu'}}) }}
+{{ form_row(formGame.description, {'attr': {'placeholder': 'Description du jeu'}}) }}
+{{ form_row(formGame.studio, {'attr': {'placeholder': 'Développeur / studio'}}) }}
+{{ form_row(formGame.release_date, {'attr': {'placeholder': 'Date de sortie (ex: 2011)'}}) }}
+{{ form_row(formGame.img_path, {'attr': {'placeholder': 'Lien vers image'}}) }}
+
+<button type="submit" class="btn btn-lg col-3 btn-outline-primary">
+    {% if editMode %}
+        Editer le jeu
+    {% else %}
+        Ajouter le jeu
+    {% endif %}
+</button>
+
+{{ form_end(formGame) }}
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

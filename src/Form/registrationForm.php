@@ -72,10 +72,12 @@ class registrationForm extends AbstractType
             ->add('_captcha',TextType::class, [
                 'label' => $randomIntOne .' + '. $randomIntTwo . ' = ',
                 'required' => true,
-                    new EqualTo ( [
+                'constraints' => [
+                    new EqualTo ([
                         'value' => $randomIntOne + $randomIntTwo,
                         'message' => 'Veuillez donner le bon résultat de l\'opération'
                     ])
+                ]     
             ])
             ->add('submit', SubmitType::class)
             ->getForm();

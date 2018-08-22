@@ -5,9 +5,10 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\GamesRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\GameRepository")
  */
 class Game
 {
@@ -20,16 +21,21 @@ class Game
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2, max=255, minMessage="Le titre doit faire minimum 2 caractères", maxMessage="Le titre doit faire au maximum 255 caractères")
+     * @Assert\NotNull(message="Le titre est obligatoire")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min=10, minMessage="Le contenu doit faire minimum 10 caractères")
+     * @Assert\NotNull(message="La description est obligatoire")
      */
     private $description;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotNull()
      */
     private $release_date;
 
@@ -45,11 +51,15 @@ class Game
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2, minMessage="Le nom du studio doit faire minimum 2 caractères")
+     * @Assert\NotNull(message="Le studio ou nom du développeur est obligatoire")
      */
     private $studio;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Url()
+     * @Assert\NotNull()
      */
     private $img_path;
 
@@ -88,6 +98,18 @@ class Game
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getRelease_Date(): ?\DateTimeInterface
+    {
+        return $this->release_date;
+    }
+
+    public function setRelease_Date(\DateTimeInterface $release_date): self
+    {
+        $this->release_date = $release_date;
 
         return $this;
     }
@@ -136,6 +158,18 @@ class Game
     public function setStudio(string $studio): self
     {
         $this->studio = $studio;
+
+        return $this;
+    }
+
+    public function getImg_Path(): ?string
+    {
+        return $this->img_path;
+    }
+
+    public function setImg_Path(string $img_path): self
+    {
+        $this->img_path = $img_path;
 
         return $this;
     }

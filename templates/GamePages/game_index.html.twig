@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Ajouter un jeu {% endblock %}
+
+{% block body %}
+
+<h1 class="text-center pb-5">Tous les jeux</h1>
+
+{% for game in games %}
+<article class="row col-12">
+
+  <div class="col-4">
+    <img src="{{ game.img_path }}" alt="{{ game.title}} cover" style="width: 100%;"/>
+  </div>
+
+  <div class="col-8">
+    <h2>{{ game.title }}</h2>
+    <hr>
+    <p>Sorti en {{ game.release_date | date('Y') }}</p>
+    <a class="btn btn-lg col-6 btn-outline-primary" href="{{ path("game_show", {'id': game.id}) }}">Lire la suite</a>
+  </div>
+
+</article>
+{% endfor %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

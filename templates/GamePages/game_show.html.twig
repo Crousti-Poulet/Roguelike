@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Ajouter un jeu {% endblock %}
+
+{% block body %}
+
+<h1 class="text-center pb-5">{{ game.title | upper }}</h1>
+
+<div class="row col-12">
+
+  <div class="col-4">
+    <img src="{{ game.img_path }}" alt="{{ game.title}} cover" style="width: 100%;"/>
+  </div>
+
+  <div class="col-8">
+    <p><strong>Synopsis</strong> : <br />
+    {{ game.description }}</p>
+    <hr>
+    <p>Développé par {{ game.studio }}</p>
+    <hr>
+    <p>Sorti en {{ game.release_date | date('Y') }}</p>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
